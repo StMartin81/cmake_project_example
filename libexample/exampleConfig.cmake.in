@@ -1,0 +1,3 @@
+@PACKAGE_INIT@
+
+include("@ConfigPackageLocation@/@PROJECT_NAME@Targets.cmake")
