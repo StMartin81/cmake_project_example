@@ -5,7 +5,6 @@ project(example)
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
-
 set(EXAMPLE_VERSION_MAJOR 0)
 set(EXAMPLE_VERSION_MINOR 1)
 set(EXAMPLE_VERSION_PATCH 0)
@@ -51,7 +50,7 @@ configure_package_config_file(
     )
     
 write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+    ${PROJECT_NAME}ConfigVersion.cmake
     VERSION ${EXAMPLE_VERSION_STRING}
     COMPATIBILITY AnyNewerVersion
     )
@@ -68,6 +67,13 @@ install(TARGETS ${PROJECT_NAME}
 # install(
 #     DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 #     )
+
+export(EXPORT ${PROJECT_NAME}Targets
+  FILE
+    ${PROJECT_NAME}Targets.cmake
+  NAMESPACE
+    ${PROJECT_NAME}::
+)
 
 install(EXPORT ${PROJECT_NAME}Targets
   FILE
@@ -88,12 +94,5 @@ install(
     ${ConfigPackageLocation}
   COMPONENT
     Development
-)
-    
-export(EXPORT ${PROJECT_NAME}Targets
-  FILE
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake"
-  NAMESPACE
-    ${PROJECT_NAME}::
 )
 
