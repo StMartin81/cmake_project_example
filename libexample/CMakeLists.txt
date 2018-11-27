@@ -68,13 +68,6 @@ install(TARGETS ${PROJECT_NAME}
 #     DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 #     )
 
-export(EXPORT ${PROJECT_NAME}Targets
-  FILE
-    ${PROJECT_NAME}Targets.cmake
-  NAMESPACE
-    ${PROJECT_NAME}::
-)
-
 install(EXPORT ${PROJECT_NAME}Targets
   FILE
     ${PROJECT_NAME}Targets.cmake
